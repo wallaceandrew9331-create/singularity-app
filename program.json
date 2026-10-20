@@ -1,0 +1,73 @@
+{
+  "_note": "Your current split. Edit this to change the program, then Data -> Erase and start over in the app (existing weeks evolve from week 1 and won't pick up edits). weight_lb null = the first session asks you. reps 'amrap' = as many reps as possible.",
+  "rest_days": ["Thursday"],
+  "days": [
+    {
+      "weekday": "Monday",
+      "name": "Chest",
+      "exercises": [
+        { "exercise_id": "barbell-bench-press",    "sets": 5, "reps": 5,  "weight_lb": 275 },
+        { "exercise_id": "incline-dumbbell-press", "sets": 4, "reps": 8,  "weight_lb": 110 },
+        { "exercise_id": "dip",                    "sets": 4, "reps": 10, "weight_lb": null },
+        { "exercise_id": "chest-fly",              "sets": 3, "reps": 10, "weight_lb": null },
+        { "exercise_id": "lateral-raise",          "sets": 3, "reps": 10, "weight_lb": null },
+        { "exercise_id": "arnold-press",           "sets": 3, "reps": 10, "weight_lb": null }
+      ]
+    },
+    {
+      "weekday": "Tuesday",
+      "name": "Back",
+      "exercises": [
+        { "exercise_id": "barbell-bent-over-row",     "sets": 4, "reps": 8,       "weight_lb": 275 },
+        { "exercise_id": "barbell-shrug",             "sets": 4, "reps": 12,      "weight_lb": 405 },
+        { "exercise_id": "pull-up",                   "sets": 4, "reps": "amrap", "weight_lb": 0 },
+        { "exercise_id": "plate-loaded-row",          "sets": 4, "reps": 10,      "weight_lb": null },
+        { "exercise_id": "plate-loaded-lat-pulldown", "sets": 4, "reps": 10,      "weight_lb": null },
+        { "exercise_id": "rear-delt-fly",             "sets": 4, "reps": 12,      "weight_lb": null }
+      ]
+    },
+    {
+      "weekday": "Wednesday",
+      "name": "Legs — quad focus",
+      "exercises": [
+        { "exercise_id": "barbell-back-squat", "sets": 5, "reps": 5,  "weight_lb": 315 },
+        { "exercise_id": "hack-squat",         "sets": 3, "reps": 8,  "weight_lb": null },
+        { "exercise_id": "leg-extension",      "sets": 4, "reps": 10, "weight_lb": null },
+        { "exercise_id": "hamstring-curl",     "sets": 4, "reps": 10, "weight_lb": null },
+        { "exercise_id": "leg-press",          "sets": 4, "reps": 10, "weight_lb": null },
+        { "exercise_id": "calf-raise",         "sets": 4, "reps": 12, "weight_lb": null }
+      ]
+    },
+    {
+      "weekday": "Friday",
+      "name": "Shoulders & chest",
+      "exercises": [
+        { "exercise_id": "shoulder-press-machine",      "sets": 4, "reps": 10, "weight_lb": null },
+        { "exercise_id": "incline-barbell-press",       "sets": 4, "reps": 12, "weight_lb": null },
+        { "exercise_id": "flat-dumbbell-bench-press",   "sets": 4, "reps": 10, "weight_lb": null },
+        { "exercise_id": "decline-barbell-bench-press", "sets": 4, "reps": 10, "weight_lb": null },
+        { "exercise_id": "lateral-raise",               "sets": 4, "reps": 12, "weight_lb": null }
+      ]
+    },
+    {
+      "weekday": "Saturday",
+      "name": "Arms",
+      "exercises": [
+        { "exercise_id": "bicep-machine-curl",     "sets": 4, "reps": 10, "weight_lb": null },
+        { "exercise_id": "tricep-cable-extension", "sets": 4, "reps": 12, "weight_lb": null },
+        { "exercise_id": "hammer-curl",            "sets": 4, "reps": 12, "weight_lb": null },
+        { "exercise_id": "skull-crusher",          "sets": 4, "reps": 12, "weight_lb": null }
+      ]
+    },
+    {
+      "weekday": "Sunday",
+      "name": "Legs — posterior",
+      "exercises": [
+        { "exercise_id": "barbell-deadlift",           "sets": 4, "reps": 3,  "weight_lb": 455 },
+        { "exercise_id": "hip-thrust-machine",         "sets": 4, "reps": 10, "weight_lb": null },
+        { "exercise_id": "belt-squat",                 "sets": 4, "reps": 10, "weight_lb": null },
+        { "exercise_id": "dumbbell-romanian-deadlift", "sets": 4, "reps": 8,  "weight_lb": null }
+      ]
+    }
+  ]
+}

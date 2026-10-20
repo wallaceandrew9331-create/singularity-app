@@ -1,0 +1,2748 @@
+{
+  "_meta": {
+    "version": "0.1.0-draft",
+    "source": "Seeded from the 28 exercise names referenced by the 7 surviving Firestore workout templates, merged with the 10 real docs from the 2019 `exercises` collection. Duplicates collapsed into aliases.",
+    "review_required": [
+      "skill_demand — my draft. You know where the real coaching burden is.",
+      "joint_stress — my draft. This is the safety-critical field; every value should get your eyes.",
+      "viable_reps — my draft. Check the ones you program often.",
+      "cue — intentionally left empty on every entry. This is your voice, not mine."
+    ],
+    "additions": [
+      "power-clean and barbell-shrug were not in your data. Added because the decomposition design depends on that example.",
+      "barbell-bent-over-row and pull-up added to anchor days 4 and 6 of the six-day strength split — the library had no primary horizontal_pull or vertical_pull.",
+      "dumbbell-shoulder-press, reverse-lunge and lateral-raise added after the week generator reported empty accessory lunge and accessory vertical_push slots.",
+      "16 exercises added from the lifter's current program (Oct 2026)."
+    ],
+    "notes": [
+      "Arm isolations carry the pattern of the chain they assist (curl -> vertical_pull, tricep extension -> horizontal_push). role='isolation' keeps them from ever being offered as a swap for a compound."
+    ]
+  },
+  "exercises": [
+    {
+      "id": "barbell-back-squat",
+      "name": "Barbell Back Squat",
+      "aliases": [
+        "Back Squat",
+        "Barbell Back Squats",
+        "BB Squat"
+      ],
+      "components": [
+        {
+          "pattern": "squat",
+          "emphasis": 1
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell",
+        "rack"
+      ],
+      "skill_demand": 4,
+      "joint_stress": {
+        "knee": 2,
+        "back": 2,
+        "hip": 1
+      },
+      "primary_muscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstrings",
+        "spinal_erectors",
+        "adductors"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        1,
+        20
+      ],
+      "default_rest_sec": 180,
+      "setup": "Bar on the upper traps, feet about shoulder width, brace before descending.",
+      "cue": "",
+      "tags": [
+        "needs_spotter"
+      ],
+      "substitutions": {
+        "lateral": [
+          "barbell-front-squat"
+        ],
+        "regress": [
+          "goblet-squat",
+          "leg-press"
+        ]
+      },
+      "load_increment_lb": 10,
+      "half_increment_lb": 5
+    },
+    {
+      "id": "barbell-front-squat",
+      "name": "Barbell Front Squat",
+      "aliases": [
+        "Front Squats",
+        "Barbell Front Squats",
+        "Front Squat"
+      ],
+      "components": [
+        {
+          "pattern": "squat",
+          "emphasis": 1
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell",
+        "rack"
+      ],
+      "skill_demand": 4,
+      "joint_stress": {
+        "knee": 2,
+        "back": 1,
+        "wrist": 2,
+        "shoulder": 1
+      },
+      "primary_muscles": [
+        "quadriceps"
+      ],
+      "secondary_muscles": [
+        "glutes",
+        "upper_back",
+        "abdominals"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        1,
+        15
+      ],
+      "default_rest_sec": 180,
+      "setup": "Bar in the front rack, elbows high, torso upright through the descent.",
+      "cue": "",
+      "tags": [],
+      "substitutions": {
+        "lateral": [
+          "barbell-back-squat"
+        ],
+        "regress": [
+          "goblet-squat"
+        ]
+      },
+      "load_increment_lb": 10,
+      "half_increment_lb": 5
+    },
+    {
+      "id": "goblet-squat",
+      "name": "Goblet Squat",
+      "aliases": [],
+      "components": [
+        {
+          "pattern": "squat",
+          "emphasis": 1
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "knee": 1,
+        "back": 1
+      },
+      "primary_muscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "abdominals",
+        "upper_back"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        20
+      ],
+      "default_rest_sec": 90,
+      "setup": "Hold one dumbbell at the chest in both hands, squat between the knees.",
+      "cue": "",
+      "tags": [
+        "beginner_friendly"
+      ],
+      "substitutions": {
+        "progress": [
+          "barbell-front-squat",
+          "barbell-back-squat"
+        ],
+        "lateral": [
+          "leg-press"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "leg-press",
+      "name": "Leg Press",
+      "aliases": [],
+      "components": [
+        {
+          "pattern": "squat",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "knee": 2,
+        "back": 1
+      },
+      "primary_muscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstrings"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        20
+      ],
+      "default_rest_sec": 90,
+      "setup": "Feet mid-platform, lower until the knees reach about ninety degrees.",
+      "cue": "",
+      "tags": [
+        "beginner_friendly",
+        "fixed_path"
+      ],
+      "substitutions": {
+        "progress": [
+          "goblet-squat",
+          "barbell-back-squat"
+        ]
+      },
+      "load_increment_lb": 10,
+      "half_increment_lb": null
+    },
+    {
+      "id": "split-squat",
+      "name": "Split Squat",
+      "aliases": [
+        "Bulgarian Split Squat",
+        "Rear Foot Elevated Split Squat"
+      ],
+      "components": [
+        {
+          "pattern": "lunge",
+          "emphasis": 1
+        }
+      ],
+      "role": "primary",
+      "unilateral": true,
+      "velocity": "grind",
+      "equipment": [
+        "bodyweight",
+        "box"
+      ],
+      "skill_demand": 3,
+      "joint_stress": {
+        "knee": 2,
+        "hip": 1
+      },
+      "primary_muscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "adductors",
+        "abdominals"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        15
+      ],
+      "default_rest_sec": 90,
+      "setup": "Rear foot on a box or bench, lunge down to parallel.",
+      "cue": "",
+      "tags": [],
+      "substitutions": {
+        "regress": [
+          "leg-press",
+          "goblet-squat"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "barbell-deadlift",
+      "name": "Barbell Deadlift",
+      "aliases": [
+        "Deadlift",
+        "Barbell Deadlifts",
+        "Conventional Deadlift"
+      ],
+      "components": [
+        {
+          "pattern": "hinge",
+          "emphasis": 1
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell"
+      ],
+      "skill_demand": 4,
+      "joint_stress": {
+        "back": 3,
+        "hip": 1,
+        "knee": 1
+      },
+      "primary_muscles": [
+        "glutes",
+        "hamstrings",
+        "spinal_erectors"
+      ],
+      "secondary_muscles": [
+        "lats",
+        "forearms",
+        "quadriceps"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        1,
+        10
+      ],
+      "default_rest_sec": 180,
+      "setup": "Bar over mid-foot, brace, push the floor away.",
+      "cue": "",
+      "tags": [],
+      "substitutions": {
+        "lateral": [
+          "sumo-deadlift"
+        ],
+        "regress": [
+          "kettlebell-deadlift"
+        ],
+        "progress": [
+          "deficit-deadlift"
+        ]
+      },
+      "load_increment_lb": 10,
+      "half_increment_lb": 5
+    },
+    {
+      "id": "sumo-deadlift",
+      "name": "Sumo Deadlift",
+      "aliases": [],
+      "components": [
+        {
+          "pattern": "hinge",
+          "emphasis": 1
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell"
+      ],
+      "skill_demand": 4,
+      "joint_stress": {
+        "back": 2,
+        "hip": 2,
+        "knee": 1
+      },
+      "primary_muscles": [
+        "glutes",
+        "adductors",
+        "hamstrings"
+      ],
+      "secondary_muscles": [
+        "spinal_erectors",
+        "quadriceps",
+        "forearms"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        1,
+        10
+      ],
+      "default_rest_sec": 180,
+      "setup": "Wide stance, hands inside the knees, hips closer to the bar.",
+      "cue": "",
+      "tags": [],
+      "substitutions": {
+        "lateral": [
+          "barbell-deadlift"
+        ],
+        "regress": [
+          "kettlebell-deadlift"
+        ]
+      },
+      "load_increment_lb": 10,
+      "half_increment_lb": 5
+    },
+    {
+      "id": "deficit-deadlift",
+      "name": "Deficit Deadlift",
+      "aliases": [
+        "Deficit Deadlifts"
+      ],
+      "components": [
+        {
+          "pattern": "hinge",
+          "emphasis": 1
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell",
+        "platform"
+      ],
+      "skill_demand": 5,
+      "joint_stress": {
+        "back": 3,
+        "hip": 2,
+        "knee": 1
+      },
+      "primary_muscles": [
+        "glutes",
+        "hamstrings",
+        "spinal_erectors"
+      ],
+      "secondary_muscles": [
+        "quadriceps",
+        "lats"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        3,
+        10
+      ],
+      "default_rest_sec": 180,
+      "setup": "Stand on a one to two inch platform, pull from the extended range.",
+      "cue": "",
+      "tags": [
+        "advanced"
+      ],
+      "substitutions": {
+        "regress": [
+          "barbell-deadlift",
+          "kettlebell-deadlift"
+        ]
+      },
+      "load_increment_lb": 10,
+      "half_increment_lb": 5
+    },
+    {
+      "id": "kettlebell-deadlift",
+      "name": "Kettlebell Deadlift",
+      "aliases": [
+        "KettleBell Deadlift"
+      ],
+      "components": [
+        {
+          "pattern": "hinge",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "kettlebell"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "back": 1,
+        "hip": 1
+      },
+      "primary_muscles": [
+        "glutes",
+        "hamstrings"
+      ],
+      "secondary_muscles": [
+        "spinal_erectors",
+        "forearms"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        20
+      ],
+      "default_rest_sec": 60,
+      "setup": "Kettlebell between the feet, hinge back, stand tall.",
+      "cue": "",
+      "tags": [
+        "beginner_friendly"
+      ],
+      "substitutions": {
+        "progress": [
+          "barbell-deadlift",
+          "sumo-deadlift"
+        ]
+      },
+      "load_increment_lb": 10,
+      "half_increment_lb": null
+    },
+    {
+      "id": "barbell-bench-press",
+      "name": "Barbell Bench Press",
+      "aliases": [
+        "Bench Press",
+        "Flat Barbell Bench Press"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell",
+        "bench",
+        "rack"
+      ],
+      "skill_demand": 3,
+      "joint_stress": {
+        "shoulder": 2,
+        "elbow": 1,
+        "wrist": 1
+      },
+      "primary_muscles": [
+        "chest",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "front_delts"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        1,
+        15
+      ],
+      "default_rest_sec": 120,
+      "setup": "Shoulder blades retracted, bar to the lower chest, feet planted.",
+      "cue": "",
+      "tags": [
+        "needs_spotter"
+      ],
+      "substitutions": {
+        "lateral": [
+          "flat-dumbbell-bench-press"
+        ],
+        "regress": [
+          "flat-dumbbell-bench-press",
+          "diamond-pushup"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": 2.5
+    },
+    {
+      "id": "flat-dumbbell-bench-press",
+      "name": "Flat Dumbbell Bench Press",
+      "aliases": [],
+      "components": [
+        {
+          "pattern": "horizontal_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell",
+        "bench"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "shoulder": 1,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "chest",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "front_delts"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        20
+      ],
+      "default_rest_sec": 90,
+      "setup": "Dumbbells at chest width, press without clashing at the top.",
+      "cue": "",
+      "tags": [
+        "beginner_friendly"
+      ],
+      "substitutions": {
+        "progress": [
+          "barbell-bench-press"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "incline-dumbbell-press",
+      "name": "Incline Dumbbell Press",
+      "aliases": [],
+      "components": [
+        {
+          "pattern": "horizontal_push",
+          "emphasis": 0.7
+        },
+        {
+          "pattern": "vertical_push",
+          "emphasis": 0.3
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell",
+        "bench"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "shoulder": 2,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "upper_chest",
+        "front_delts"
+      ],
+      "secondary_muscles": [
+        "triceps"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        20
+      ],
+      "default_rest_sec": 90,
+      "setup": "Bench at thirty to forty-five degrees, press over the collarbone.",
+      "cue": "",
+      "tags": [],
+      "substitutions": {
+        "lateral": [
+          "flat-dumbbell-bench-press"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "alternating-dumbbell-bench-press",
+      "name": "Alternating Dumbbell Bench Press",
+      "aliases": [],
+      "components": [
+        {
+          "pattern": "horizontal_push",
+          "emphasis": 0.8
+        },
+        {
+          "pattern": "anti_rotation",
+          "emphasis": 0.2
+        }
+      ],
+      "role": "accessory",
+      "unilateral": true,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell",
+        "bench"
+      ],
+      "skill_demand": 3,
+      "joint_stress": {
+        "shoulder": 1,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "chest",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "abdominals",
+        "front_delts"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        20
+      ],
+      "default_rest_sec": 60,
+      "setup": "Hold one dumbbell up while pressing the other. Alternate each rep.",
+      "cue": "",
+      "tags": [],
+      "substitutions": {
+        "lateral": [
+          "flat-dumbbell-bench-press"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "narrow-grip-bench-press",
+      "name": "Narrow Grip Bench Press",
+      "aliases": [
+        "Narrow grip bench press",
+        "Close Grip Bench Press"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell",
+        "bench",
+        "rack"
+      ],
+      "skill_demand": 3,
+      "joint_stress": {
+        "elbow": 2,
+        "shoulder": 1,
+        "wrist": 1
+      },
+      "primary_muscles": [
+        "triceps",
+        "chest"
+      ],
+      "secondary_muscles": [
+        "front_delts"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        5,
+        15
+      ],
+      "default_rest_sec": 90,
+      "setup": "Hands about shoulder width, elbows tracking close to the ribs.",
+      "cue": "",
+      "tags": [
+        "needs_spotter"
+      ],
+      "substitutions": {
+        "regress": [
+          "diamond-pushup",
+          "tricep-cable-extension"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": 2.5
+    },
+    {
+      "id": "diamond-pushup",
+      "name": "Diamond Pushup",
+      "aliases": [
+        "Diamond Pushups"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "bodyweight"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "wrist": 2,
+        "elbow": 2,
+        "shoulder": 1
+      },
+      "primary_muscles": [
+        "triceps",
+        "chest"
+      ],
+      "secondary_muscles": [
+        "abdominals",
+        "front_delts"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        5,
+        25
+      ],
+      "default_rest_sec": 60,
+      "setup": "Hands together under the sternum, body in one line.",
+      "cue": "",
+      "tags": [
+        "no_equipment"
+      ],
+      "substitutions": {
+        "progress": [
+          "narrow-grip-bench-press"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "military-press",
+      "name": "Military Press",
+      "aliases": [
+        "Standing Overhead Press",
+        "Barbell Overhead Press",
+        "OHP"
+      ],
+      "components": [
+        {
+          "pattern": "vertical_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell",
+        "rack"
+      ],
+      "skill_demand": 4,
+      "joint_stress": {
+        "shoulder": 3,
+        "back": 2,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "front_delts",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "upper_chest",
+        "abdominals",
+        "upper_back"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        3,
+        12
+      ],
+      "default_rest_sec": 120,
+      "setup": "Bar at the collarbone, ribs down, press and finish with the head through.",
+      "cue": "",
+      "tags": [],
+      "substitutions": {
+        "regress": [
+          "incline-dumbbell-press"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": 2.5
+    },
+    {
+      "id": "side-press",
+      "name": "Side Press",
+      "aliases": [],
+      "components": [
+        {
+          "pattern": "vertical_push",
+          "emphasis": 0.7
+        },
+        {
+          "pattern": "anti_rotation",
+          "emphasis": 0.3
+        }
+      ],
+      "role": "primary",
+      "unilateral": true,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell"
+      ],
+      "skill_demand": 4,
+      "joint_stress": {
+        "shoulder": 2,
+        "back": 2
+      },
+      "primary_muscles": [
+        "front_delts",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "obliques",
+        "upper_back"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        3,
+        10
+      ],
+      "default_rest_sec": 90,
+      "setup": "Press one bell overhead while the torso leans away from the working side.",
+      "cue": "",
+      "tags": [
+        "old_time_lift"
+      ],
+      "substitutions": {
+        "regress": [
+          "incline-dumbbell-press"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "cable-lat-pulldown",
+      "name": "Cable Lat Pulldown",
+      "aliases": [
+        "Lat Pulldown"
+      ],
+      "components": [
+        {
+          "pattern": "vertical_pull",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "cable",
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "shoulder": 1,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "lats"
+      ],
+      "secondary_muscles": [
+        "biceps",
+        "mid_back"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        20
+      ],
+      "default_rest_sec": 60,
+      "setup": "Chest tall, drive the elbows down rather than pulling with the hands.",
+      "cue": "",
+      "tags": [
+        "beginner_friendly",
+        "fixed_path"
+      ],
+      "substitutions": {},
+      "load_increment_lb": 10,
+      "half_increment_lb": null
+    },
+    {
+      "id": "straight-arm-pulldown",
+      "name": "Straight Arm Pulldown",
+      "aliases": [],
+      "components": [
+        {
+          "pattern": "vertical_pull",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "cable"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "shoulder": 1
+      },
+      "primary_muscles": [
+        "lats"
+      ],
+      "secondary_muscles": [
+        "triceps"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        10,
+        20
+      ],
+      "default_rest_sec": 45,
+      "setup": "Arms long, sweep the bar to the thighs without bending the elbows.",
+      "cue": "",
+      "tags": [],
+      "substitutions": {},
+      "load_increment_lb": 10,
+      "half_increment_lb": null
+    },
+    {
+      "id": "seated-cable-row",
+      "name": "Seated Cable Row",
+      "aliases": [],
+      "components": [
+        {
+          "pattern": "horizontal_pull",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "cable",
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "back": 1,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "mid_back",
+        "lats"
+      ],
+      "secondary_muscles": [
+        "biceps",
+        "rear_delts"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        20
+      ],
+      "default_rest_sec": 60,
+      "setup": "Torso upright, pull to the navel, control the return.",
+      "cue": "",
+      "tags": [
+        "beginner_friendly",
+        "fixed_path"
+      ],
+      "substitutions": {
+        "lateral": [
+          "single-arm-dumbbell-row"
+        ]
+      },
+      "load_increment_lb": 10,
+      "half_increment_lb": null
+    },
+    {
+      "id": "single-arm-dumbbell-row",
+      "name": "Single Arm Dumbbell Row",
+      "aliases": [
+        "Single arm Dumbbell row",
+        "One Arm Row"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_pull",
+          "emphasis": 0.8
+        },
+        {
+          "pattern": "anti_rotation",
+          "emphasis": 0.2
+        }
+      ],
+      "role": "accessory",
+      "unilateral": true,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell",
+        "bench"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "back": 1,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "lats",
+        "mid_back"
+      ],
+      "secondary_muscles": [
+        "biceps",
+        "obliques"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        20
+      ],
+      "default_rest_sec": 60,
+      "setup": "One hand and knee on the bench, row to the hip, square the shoulders.",
+      "cue": "",
+      "tags": [],
+      "substitutions": {
+        "lateral": [
+          "seated-cable-row"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "barbell-shrug",
+      "name": "Barbell Shrug",
+      "aliases": [
+        "Shrug"
+      ],
+      "components": [
+        {
+          "pattern": "vertical_pull",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "back": 1,
+        "shoulder": 1
+      },
+      "primary_muscles": [
+        "traps"
+      ],
+      "secondary_muscles": [
+        "forearms"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        20
+      ],
+      "default_rest_sec": 60,
+      "setup": "Bar at arms length, elevate the shoulders straight up, no rolling.",
+      "cue": "",
+      "tags": [
+        "added_for_decomposition"
+      ],
+      "substitutions": {},
+      "load_increment_lb": 5,
+      "half_increment_lb": 2.5
+    },
+    {
+      "id": "dumbbell-bicep-curl",
+      "name": "Dumbbell Bicep Curl",
+      "aliases": [
+        "Dumbbell Bicep Curls",
+        "DB Curl"
+      ],
+      "components": [
+        {
+          "pattern": "vertical_pull",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "biceps"
+      ],
+      "secondary_muscles": [
+        "forearms"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        20
+      ],
+      "default_rest_sec": 45,
+      "setup": "Elbows pinned to the ribs, curl without swinging the torso.",
+      "cue": "",
+      "tags": [
+        "beginner_friendly"
+      ],
+      "substitutions": {},
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "tricep-cable-extension",
+      "name": "Tricep Cable Extension",
+      "aliases": [
+        "Tricep Cable Extensions",
+        "Cable Pushdown"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "cable"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "triceps"
+      ],
+      "secondary_muscles": [],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        20
+      ],
+      "default_rest_sec": 45,
+      "setup": "Elbows fixed at the sides, extend to lockout, control the return.",
+      "cue": "",
+      "tags": [
+        "beginner_friendly"
+      ],
+      "substitutions": {
+        "lateral": [
+          "diamond-pushup"
+        ]
+      },
+      "load_increment_lb": 10,
+      "half_increment_lb": null
+    },
+    {
+      "id": "calf-raise",
+      "name": "Calf Raise",
+      "aliases": [
+        "Calf Extensions",
+        "Standing Calf Raise"
+      ],
+      "components": [
+        {
+          "pattern": "gait",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "ankle": 1
+      },
+      "primary_muscles": [
+        "calves"
+      ],
+      "secondary_muscles": [],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        25
+      ],
+      "default_rest_sec": 45,
+      "setup": "Balls of the feet on the platform, full stretch at the bottom.",
+      "cue": "",
+      "tags": [
+        "beginner_friendly"
+      ],
+      "substitutions": {},
+      "load_increment_lb": 10,
+      "half_increment_lb": null
+    },
+    {
+      "id": "leg-extension",
+      "name": "Leg Extension",
+      "aliases": [
+        "Leg extensions",
+        "Leg Extensions"
+      ],
+      "components": [
+        {
+          "pattern": "squat",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "knee": 2
+      },
+      "primary_muscles": [
+        "quadriceps"
+      ],
+      "secondary_muscles": [],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        20
+      ],
+      "default_rest_sec": 45,
+      "setup": "Pad above the ankle, extend to lockout without slamming.",
+      "cue": "",
+      "tags": [
+        "fixed_path"
+      ],
+      "substitutions": {},
+      "load_increment_lb": 10,
+      "half_increment_lb": null
+    },
+    {
+      "id": "hamstring-curl",
+      "name": "Hamstring Curl",
+      "aliases": [
+        "Hamstring Curls",
+        "Leg Curl",
+        "Lying Leg Curl"
+      ],
+      "components": [
+        {
+          "pattern": "hinge",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "knee": 1
+      },
+      "primary_muscles": [
+        "hamstrings"
+      ],
+      "secondary_muscles": [
+        "calves"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        20
+      ],
+      "default_rest_sec": 45,
+      "setup": "Pad at the achilles, curl to full contraction, lower slowly.",
+      "cue": "",
+      "tags": [
+        "beginner_friendly",
+        "fixed_path"
+      ],
+      "substitutions": {},
+      "load_increment_lb": 10,
+      "half_increment_lb": null
+    },
+    {
+      "id": "russian-twist",
+      "name": "Russian Twist",
+      "aliases": [
+        "russian twist"
+      ],
+      "components": [
+        {
+          "pattern": "rotation",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "bodyweight"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "back": 2
+      },
+      "primary_muscles": [
+        "obliques"
+      ],
+      "secondary_muscles": [
+        "abdominals",
+        "hip_flexors"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        10,
+        30
+      ],
+      "default_rest_sec": 45,
+      "setup": "Seated, heels off the floor, rotate the ribcage rather than the arms.",
+      "cue": "",
+      "tags": [
+        "no_equipment"
+      ],
+      "substitutions": {},
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "leg-raise",
+      "name": "Leg Raise",
+      "aliases": [
+        "leg raises",
+        "Hanging Leg Raise"
+      ],
+      "components": [
+        {
+          "pattern": "anti_extension",
+          "emphasis": 0.6
+        },
+        {
+          "pattern": "flexion",
+          "emphasis": 0.4
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "bodyweight"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "back": 2,
+        "hip": 1
+      },
+      "primary_muscles": [
+        "abdominals",
+        "hip_flexors"
+      ],
+      "secondary_muscles": [],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        20
+      ],
+      "default_rest_sec": 45,
+      "setup": "Lower back stays flat, raise the legs without swinging.",
+      "cue": "",
+      "tags": [
+        "no_equipment"
+      ],
+      "substitutions": {
+        "lateral": [
+          "v-up"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "v-up",
+      "name": "V-Up",
+      "aliases": [
+        "v-ups",
+        "V-Ups"
+      ],
+      "components": [
+        {
+          "pattern": "flexion",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "bodyweight"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "back": 2
+      },
+      "primary_muscles": [
+        "abdominals",
+        "hip_flexors"
+      ],
+      "secondary_muscles": [],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        25
+      ],
+      "default_rest_sec": 45,
+      "setup": "Legs and torso rise together to meet over the hips.",
+      "cue": "",
+      "tags": [
+        "no_equipment"
+      ],
+      "substitutions": {
+        "lateral": [
+          "leg-raise"
+        ]
+      },
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "mountain-climber",
+      "name": "Mountain Climber",
+      "aliases": [
+        "mountain climbers"
+      ],
+      "components": [
+        {
+          "pattern": "anti_extension",
+          "emphasis": 0.7
+        },
+        {
+          "pattern": "gait",
+          "emphasis": 0.3
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "ballistic",
+      "equipment": [
+        "bodyweight"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "wrist": 1,
+        "back": 1
+      },
+      "primary_muscles": [
+        "abdominals",
+        "hip_flexors"
+      ],
+      "secondary_muscles": [
+        "front_delts",
+        "quadriceps"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        10,
+        40
+      ],
+      "viable_duration_sec": [
+        20,
+        60
+      ],
+      "default_rest_sec": 45,
+      "setup": "Plank position, drive the knees alternately without the hips rising.",
+      "cue": "",
+      "tags": [
+        "no_equipment",
+        "conditioning"
+      ],
+      "substitutions": {},
+      "load_increment_lb": 5,
+      "half_increment_lb": null
+    },
+    {
+      "id": "medicine-ball-slam",
+      "name": "Medicine Ball Slam",
+      "aliases": [
+        "Medicine Ball Slams"
+      ],
+      "components": [
+        {
+          "pattern": "flexion",
+          "emphasis": 0.6
+        },
+        {
+          "pattern": "hinge",
+          "emphasis": 0.4
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "ballistic",
+      "equipment": [
+        "medicine_ball"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "back": 2,
+        "shoulder": 1
+      },
+      "primary_muscles": [
+        "abdominals",
+        "lats"
+      ],
+      "secondary_muscles": [
+        "glutes",
+        "front_delts"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        5,
+        15
+      ],
+      "default_rest_sec": 60,
+      "setup": "Ball overhead, slam through the floor, absorb with the hips.",
+      "cue": "",
+      "tags": [
+        "conditioning",
+        "power"
+      ],
+      "substitutions": {},
+      "load_increment_lb": 2,
+      "half_increment_lb": null
+    },
+    {
+      "id": "treadmill-hiit",
+      "name": "Treadmill Intervals",
+      "aliases": [
+        "Treadmill",
+        "HIIT Treadmill"
+      ],
+      "components": [
+        {
+          "pattern": "gait",
+          "emphasis": 1
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "ballistic",
+      "equipment": [
+        "treadmill"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "knee": 2,
+        "ankle": 1,
+        "hip": 1
+      },
+      "primary_muscles": [
+        "quadriceps",
+        "glutes",
+        "calves"
+      ],
+      "secondary_muscles": [
+        "hamstrings"
+      ],
+      "prescription_unit": "time",
+      "viable_reps": null,
+      "viable_duration_sec": [
+        600,
+        2400
+      ],
+      "default_rest_sec": 0,
+      "setup": "Alternate work and recovery intervals at a fixed incline.",
+      "cue": "",
+      "tags": [
+        "conditioning",
+        "cardio"
+      ],
+      "substitutions": {},
+      "load_increment_lb": 0,
+      "half_increment_lb": null
+    },
+    {
+      "id": "power-clean",
+      "name": "Power Clean",
+      "aliases": [
+        "Clean"
+      ],
+      "components": [
+        {
+          "pattern": "hinge",
+          "emphasis": 0.55
+        },
+        {
+          "pattern": "vertical_pull",
+          "emphasis": 0.3
+        },
+        {
+          "pattern": "squat",
+          "emphasis": 0.15
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "ballistic",
+      "equipment": [
+        "barbell",
+        "bumper_plates",
+        "platform"
+      ],
+      "skill_demand": 5,
+      "joint_stress": {
+        "back": 2,
+        "wrist": 2,
+        "shoulder": 1,
+        "knee": 1
+      },
+      "primary_muscles": [
+        "glutes",
+        "hamstrings",
+        "traps"
+      ],
+      "secondary_muscles": [
+        "quadriceps",
+        "spinal_erectors",
+        "front_delts"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        1,
+        5
+      ],
+      "default_rest_sec": 180,
+      "setup": "Pull from the floor, extend the hips violently, receive in a quarter squat.",
+      "cue": "",
+      "tags": [
+        "olympic_lift",
+        "often_restricted",
+        "advanced",
+        "power"
+      ],
+      "substitutions": {
+        "lateral": [],
+        "regress": [
+          "kettlebell-deadlift"
+        ],
+        "decompose": [
+          [
+            "goblet-squat",
+            "barbell-shrug"
+          ],
+          [
+            "barbell-deadlift",
+            "barbell-shrug"
+          ]
+        ]
+      },
+      "load_increment_lb": 10,
+      "half_increment_lb": 5
+    },
+    {
+      "id": "barbell-bent-over-row",
+      "name": "Barbell Bent Over Row",
+      "aliases": [
+        "Bent Over Row",
+        "Barbell Row",
+        "BB Row"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_pull",
+          "emphasis": 0.85
+        },
+        {
+          "pattern": "anti_extension",
+          "emphasis": 0.15
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell"
+      ],
+      "skill_demand": 3,
+      "joint_stress": {
+        "back": 2,
+        "elbow": 1,
+        "hip": 1
+      },
+      "primary_muscles": [
+        "mid_back",
+        "lats"
+      ],
+      "secondary_muscles": [
+        "biceps",
+        "rear_delts",
+        "spinal_erectors"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        4,
+        12
+      ],
+      "default_rest_sec": 120,
+      "load_increment_lb": 5,
+      "half_increment_lb": 2.5,
+      "setup": "Hinge to roughly forty-five degrees, row to the lower ribs, hold the torso angle.",
+      "cue": "",
+      "tags": [
+        "added_for_split_coverage"
+      ],
+      "substitutions": {
+        "lateral": [
+          "single-arm-dumbbell-row"
+        ],
+        "regress": [
+          "seated-cable-row"
+        ]
+      }
+    },
+    {
+      "id": "pull-up",
+      "name": "Pull-Up",
+      "aliases": [
+        "Pullup",
+        "Chin-Up",
+        "Weighted Pull-Up"
+      ],
+      "components": [
+        {
+          "pattern": "vertical_pull",
+          "emphasis": 1
+        }
+      ],
+      "role": "primary",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "pullup_bar",
+        "bodyweight"
+      ],
+      "skill_demand": 3,
+      "joint_stress": {
+        "shoulder": 1,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "lats"
+      ],
+      "secondary_muscles": [
+        "biceps",
+        "mid_back",
+        "abdominals"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        3,
+        12
+      ],
+      "default_rest_sec": 120,
+      "load_increment_lb": 5,
+      "half_increment_lb": 2.5,
+      "setup": "Full hang to chin over the bar. Add external load once bodyweight sets top the range.",
+      "cue": "",
+      "tags": [
+        "added_for_split_coverage"
+      ],
+      "substitutions": {
+        "regress": [
+          "cable-lat-pulldown"
+        ]
+      }
+    },
+    {
+      "id": "dumbbell-shoulder-press",
+      "name": "Dumbbell Shoulder Press",
+      "aliases": [
+        "Seated Dumbbell Press",
+        "DB Shoulder Press"
+      ],
+      "components": [
+        {
+          "pattern": "vertical_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell",
+        "bench"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "shoulder": 2,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "front_delts"
+      ],
+      "secondary_muscles": [
+        "triceps",
+        "upper_chest"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        15
+      ],
+      "default_rest_sec": 90,
+      "load_increment_lb": 5,
+      "half_increment_lb": null,
+      "setup": "Seated with back support, press from ear height to lockout.",
+      "cue": "",
+      "tags": [
+        "added_for_slot_coverage"
+      ],
+      "substitutions": {
+        "progress": [
+          "military-press"
+        ]
+      }
+    },
+    {
+      "id": "reverse-lunge",
+      "name": "Reverse Lunge",
+      "aliases": [
+        "Dumbbell Reverse Lunge",
+        "Walking Lunge"
+      ],
+      "components": [
+        {
+          "pattern": "lunge",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": true,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "knee": 1,
+        "hip": 1
+      },
+      "primary_muscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstrings",
+        "adductors"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        20
+      ],
+      "default_rest_sec": 75,
+      "load_increment_lb": 5,
+      "half_increment_lb": null,
+      "setup": "Step back to a knee-touch, drive through the front heel to stand.",
+      "cue": "",
+      "tags": [
+        "added_for_slot_coverage"
+      ],
+      "substitutions": {
+        "progress": [
+          "split-squat"
+        ]
+      }
+    },
+    {
+      "id": "lateral-raise",
+      "name": "Lateral Raise",
+      "aliases": [
+        "Dumbbell Lateral Raise",
+        "Side Raise"
+      ],
+      "components": [
+        {
+          "pattern": "vertical_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "shoulder": 1
+      },
+      "primary_muscles": [
+        "side_delts"
+      ],
+      "secondary_muscles": [],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        10,
+        20
+      ],
+      "default_rest_sec": 45,
+      "load_increment_lb": 5,
+      "half_increment_lb": null,
+      "setup": "Raise to shoulder height with a soft elbow, lead with the elbow not the hand.",
+      "cue": "",
+      "tags": [
+        "added_for_slot_coverage"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "dip",
+      "name": "Dip",
+      "aliases": [
+        "Dips",
+        "Parallel Bar Dip"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_push",
+          "emphasis": 0.6
+        },
+        {
+          "pattern": "vertical_push",
+          "emphasis": 0.4
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "dip_station",
+        "bodyweight"
+      ],
+      "skill_demand": 3,
+      "joint_stress": {
+        "shoulder": 2,
+        "elbow": 2
+      },
+      "primary_muscles": [
+        "chest",
+        "triceps"
+      ],
+      "secondary_muscles": [
+        "front_delts"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        5,
+        20
+      ],
+      "default_rest_sec": 90,
+      "load_increment_lb": 5,
+      "half_increment_lb": 2.5,
+      "setup": "Slight forward lean for chest, lower to a shoulder-safe depth.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "chest-fly",
+      "name": "Chest Fly",
+      "aliases": [
+        "Chest Flys",
+        "Pec Deck",
+        "Cable Fly"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "shoulder": 1
+      },
+      "primary_muscles": [
+        "chest"
+      ],
+      "secondary_muscles": [
+        "front_delts"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        20
+      ],
+      "default_rest_sec": 60,
+      "load_increment_lb": 10,
+      "half_increment_lb": null,
+      "setup": "Soft elbows, arc the hands together, control the stretch.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "arnold-press",
+      "name": "Arnold Press",
+      "aliases": [],
+      "components": [
+        {
+          "pattern": "vertical_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell",
+        "bench"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "shoulder": 2,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "front_delts",
+        "side_delts"
+      ],
+      "secondary_muscles": [
+        "triceps"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        15
+      ],
+      "default_rest_sec": 75,
+      "load_increment_lb": 5,
+      "half_increment_lb": null,
+      "setup": "Start palms in at the chin, rotate out as you press.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "plate-loaded-row",
+      "name": "Plate Loaded Row",
+      "aliases": [
+        "Hammer Strength Row",
+        "Machine Row"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_pull",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "back": 1,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "mid_back",
+        "lats"
+      ],
+      "secondary_muscles": [
+        "biceps",
+        "rear_delts"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        15
+      ],
+      "default_rest_sec": 90,
+      "load_increment_lb": 10,
+      "half_increment_lb": 5,
+      "setup": "Chest on the pad, drive the elbows back.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "plate-loaded-lat-pulldown",
+      "name": "Plate Loaded Lat Pulldown",
+      "aliases": [
+        "Hammer Strength Pulldown",
+        "Machine Pulldown"
+      ],
+      "components": [
+        {
+          "pattern": "vertical_pull",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "shoulder": 1,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "lats"
+      ],
+      "secondary_muscles": [
+        "biceps",
+        "mid_back"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        15
+      ],
+      "default_rest_sec": 90,
+      "load_increment_lb": 10,
+      "half_increment_lb": 5,
+      "setup": "Pull the elbows to the ribs, control the return.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "rear-delt-fly",
+      "name": "Rear Delt Fly",
+      "aliases": [
+        "Rear Delt Flys",
+        "Reverse Pec Deck"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_pull",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "shoulder": 1
+      },
+      "primary_muscles": [
+        "rear_delts"
+      ],
+      "secondary_muscles": [
+        "mid_back"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        10,
+        20
+      ],
+      "default_rest_sec": 45,
+      "load_increment_lb": 5,
+      "half_increment_lb": null,
+      "setup": "Arms long, sweep out to the sides, no shrug.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "hack-squat",
+      "name": "Hack Squat",
+      "aliases": [
+        "Hack Squat Machine"
+      ],
+      "components": [
+        {
+          "pattern": "squat",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "machine"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "knee": 2,
+        "back": 1
+      },
+      "primary_muscles": [
+        "quadriceps"
+      ],
+      "secondary_muscles": [
+        "glutes"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        15
+      ],
+      "default_rest_sec": 120,
+      "load_increment_lb": 10,
+      "half_increment_lb": 5,
+      "setup": "Feet low and narrow for quads, full depth.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "shoulder-press-machine",
+      "name": "Shoulder Press Machine",
+      "aliases": [
+        "Machine Shoulder Press"
+      ],
+      "components": [
+        {
+          "pattern": "vertical_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "shoulder": 2,
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "front_delts"
+      ],
+      "secondary_muscles": [
+        "triceps",
+        "side_delts"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        15
+      ],
+      "default_rest_sec": 90,
+      "load_increment_lb": 10,
+      "half_increment_lb": null,
+      "setup": "Handles at ear height, press to lockout.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "incline-barbell-press",
+      "name": "Incline Barbell Press",
+      "aliases": [
+        "Incline Barbell Bench Press",
+        "Incline Bench"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_push",
+          "emphasis": 0.7
+        },
+        {
+          "pattern": "vertical_push",
+          "emphasis": 0.3
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell",
+        "bench",
+        "rack"
+      ],
+      "skill_demand": 3,
+      "joint_stress": {
+        "shoulder": 2,
+        "elbow": 1,
+        "wrist": 1
+      },
+      "primary_muscles": [
+        "upper_chest",
+        "front_delts"
+      ],
+      "secondary_muscles": [
+        "triceps"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        3,
+        15
+      ],
+      "default_rest_sec": 120,
+      "load_increment_lb": 5,
+      "half_increment_lb": 2.5,
+      "setup": "Bench at thirty degrees, bar to the upper chest.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "decline-barbell-bench-press",
+      "name": "Decline Barbell Bench Press",
+      "aliases": [
+        "Decline Bench"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell",
+        "bench",
+        "rack"
+      ],
+      "skill_demand": 3,
+      "joint_stress": {
+        "shoulder": 1,
+        "elbow": 1,
+        "wrist": 1
+      },
+      "primary_muscles": [
+        "chest"
+      ],
+      "secondary_muscles": [
+        "triceps"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        3,
+        15
+      ],
+      "default_rest_sec": 120,
+      "load_increment_lb": 5,
+      "half_increment_lb": 2.5,
+      "setup": "Legs locked in, bar to the lower chest.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "bicep-machine-curl",
+      "name": "Bicep Machine Curl",
+      "aliases": [
+        "Machine Curl",
+        "Preacher Curl Machine"
+      ],
+      "components": [
+        {
+          "pattern": "vertical_pull",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "biceps"
+      ],
+      "secondary_muscles": [
+        "forearms"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        20
+      ],
+      "default_rest_sec": 45,
+      "load_increment_lb": 5,
+      "half_increment_lb": null,
+      "setup": "Upper arm flat on the pad, full extension at the bottom.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "hammer-curl",
+      "name": "Dumbbell Hammer Curl",
+      "aliases": [
+        "Hammer Curls",
+        "Dumbbell Hammer Curls"
+      ],
+      "components": [
+        {
+          "pattern": "vertical_pull",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "elbow": 1
+      },
+      "primary_muscles": [
+        "brachialis",
+        "forearms"
+      ],
+      "secondary_muscles": [
+        "biceps"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        20
+      ],
+      "default_rest_sec": 45,
+      "load_increment_lb": 5,
+      "half_increment_lb": null,
+      "setup": "Neutral grip, elbows pinned, no swing.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "skull-crusher",
+      "name": "Skull Crusher",
+      "aliases": [
+        "Skull Crushers",
+        "EZ Bar Skull Crusher",
+        "Lying Tricep Extension"
+      ],
+      "components": [
+        {
+          "pattern": "horizontal_push",
+          "emphasis": 1
+        }
+      ],
+      "role": "isolation",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "barbell",
+        "bench"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "elbow": 2
+      },
+      "primary_muscles": [
+        "triceps"
+      ],
+      "secondary_muscles": [],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        8,
+        20
+      ],
+      "default_rest_sec": 60,
+      "load_increment_lb": 5,
+      "half_increment_lb": 2.5,
+      "setup": "Lower to the forehead or just behind, elbows stay pointed up.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "hip-thrust-machine",
+      "name": "Hip Thrust Machine",
+      "aliases": [
+        "Machine Hip Thrust",
+        "Hip Thrust"
+      ],
+      "components": [
+        {
+          "pattern": "hinge",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "back": 1,
+        "hip": 1
+      },
+      "primary_muscles": [
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "hamstrings"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        15
+      ],
+      "default_rest_sec": 90,
+      "load_increment_lb": 10,
+      "half_increment_lb": null,
+      "setup": "Chin tucked, ribs down, full lockout with a squeeze.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "belt-squat",
+      "name": "Belt Squat",
+      "aliases": [
+        "Belt Squat Machine"
+      ],
+      "components": [
+        {
+          "pattern": "squat",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "machine"
+      ],
+      "skill_demand": 1,
+      "joint_stress": {
+        "knee": 1,
+        "hip": 1
+      },
+      "primary_muscles": [
+        "quadriceps",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "adductors"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        15
+      ],
+      "default_rest_sec": 120,
+      "load_increment_lb": 10,
+      "half_increment_lb": 5,
+      "setup": "Torso upright, sit straight down between the heels.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    },
+    {
+      "id": "dumbbell-romanian-deadlift",
+      "name": "Dumbbell Romanian Deadlift",
+      "aliases": [
+        "Romanian Deadlifts Dumbbells",
+        "DB RDL",
+        "Dumbbell RDL"
+      ],
+      "components": [
+        {
+          "pattern": "hinge",
+          "emphasis": 1
+        }
+      ],
+      "role": "accessory",
+      "unilateral": false,
+      "velocity": "grind",
+      "equipment": [
+        "dumbbell"
+      ],
+      "skill_demand": 2,
+      "joint_stress": {
+        "back": 2,
+        "hip": 1
+      },
+      "primary_muscles": [
+        "hamstrings",
+        "glutes"
+      ],
+      "secondary_muscles": [
+        "spinal_erectors",
+        "forearms"
+      ],
+      "prescription_unit": "reps",
+      "viable_reps": [
+        6,
+        15
+      ],
+      "default_rest_sec": 90,
+      "load_increment_lb": 5,
+      "half_increment_lb": null,
+      "setup": "Soft knees, push the hips back until the hamstrings stop you.",
+      "cue": "",
+      "tags": [
+        "from_current_program"
+      ],
+      "substitutions": {}
+    }
+  ]
+}

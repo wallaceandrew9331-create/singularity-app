@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Singularity</title>
+<meta name="theme-color" content="#11131a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Singularity">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="icon" href="./icon-192.png">
+<link rel="stylesheet" href="./app.css">
+</head>
+<body>
+
+<header id="hdr">
+  <div class="hdr-main">
+    <div id="hdr-title">Singularity</div>
+    <div id="hdr-sub"></div>
+  </div>
+  <div id="hdr-badge"></div>
+</header>
+
+<main id="view"></main>
+
+<footer id="foot">
+  <div id="timer" hidden>
+    <div id="timer-bar"></div>
+    <div class="timer-row">
+      <div class="timer-text">
+        <div id="timer-clock">0:00</div>
+        <div id="timer-label"></div>
+      </div>
+      <button data-timer="-15">−15</button>
+      <button data-timer="30">+30</button>
+      <button data-timer="stop" id="timer-stop">Skip</button>
+    </div>
+  </div>
+  <nav id="tabs">
+    <button data-view="today">Today</button>
+    <button data-view="week">Week</button>
+    <button data-view="data">Data</button>
+  </nav>
+</footer>
+
+<div id="sheet-backdrop" hidden></div>
+<div id="sheet" hidden></div>
+
+<script src="./engine.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
