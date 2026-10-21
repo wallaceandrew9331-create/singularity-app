@@ -9,7 +9,7 @@
  * first paint when online. For a personal tool that is the right trade.
  */
 
-var CACHE = 'singularity-v4';
+var CACHE = 'singularity-v5';
 
 var SHELL = [
   './',
@@ -17,6 +17,7 @@ var SHELL = [
   './app.css',
   './app.js',
   './engine.js',
+  './stats.js',
   './exercise-library.json',
   './program.json',
   './manifest.webmanifest',

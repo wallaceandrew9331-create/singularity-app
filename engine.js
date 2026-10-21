@@ -152,6 +152,7 @@ function clonePrescription(p) {
   n.target_reps = p.target_reps.slice();
   n.rep_range = p.rep_range ? p.rep_range.slice() : null;
   n.note = '';
+  delete n.temp_swap_of;
   return n;
 }
 
@@ -329,7 +330,7 @@ function cloneWorkouts(workouts, note) {
     return {
       day: w.day, weekday: w.weekday, name: w.name,
       exercises: w.exercises.map(function (p) {
-        var n = clonePrescription(p);
+        var n = clonePrescription(p.temp_swap_of || p);
         n.note = note !== undefined ? note : p.note;
         return n;
       })
@@ -357,7 +358,8 @@ function nextWeek(history, library, config) {
       deload: false,
       workouts: cloneWorkouts(prevWeek.resume || prevWeek.workouts, 'resumed after deload'),
       warnings: [],
-      transition: {}
+      transition: {},
+      parked: copyParked(prevWeek.parked)
     };
     // calibrations made during the deload week still count
     resumed.workouts.forEach(function (w) {
@@ -382,6 +384,7 @@ function nextWeek(history, library, config) {
 
   var transition = {};
   var primaryFailures = 0;
+  var parked = copyParked(prevWeek.parked);
 
   var workouts = prevWeek.workouts.map(function (w) {
     var log = logByDay[w.day];
@@ -393,6 +396,22 @@ function nextWeek(history, library, config) {
     return {
       day: w.day, weekday: w.weekday, name: w.name,
       exercises: w.exercises.map(function (p) {
+        // A today-only swap: the replacement progresses on its own and is parked;
+        // the original comes back next week exactly as it was.
+        if (p.temp_swap_of) {
+          var repl = stripSwap(p);
+          var rr = progressExercise(repl, logByExercise[repl.exercise_id], byId[repl.exercise_id], {
+            priorMisses: priorMissCount(history, repl.slot),
+            evaluate: evaluate
+          }, config);
+          transition[repl.slot] = rr.action;
+          parked[repl.slot] = rr.next;
+          var orig = clonePrescription(p.temp_swap_of);
+          orig.note = 'back after a one-off swap';
+          transition[orig.slot] = 'not_evaluated';
+          return orig;
+        }
+
         var ex = byId[p.exercise_id];
         var r = progressExercise(p, logByExercise[p.exercise_id], ex, {
           priorMisses: priorMissCount(history, p.slot),
@@ -405,7 +424,8 @@ function nextWeek(history, library, config) {
     };
   });
 
-  var week = { index: prevWeek.index + 1, deload: false, workouts: workouts, warnings: [], transition: transition };
+  var week = { index: prevWeek.index + 1, deload: false, workouts: workouts, warnings: [],
+    transition: transition, parked: parked };
 
   var due = weeksSinceDeload(history) >= config.deload_every_weeks;
   if (due || primaryFailures >= config.deload_primary_failures) {
@@ -428,6 +448,7 @@ function applyDeload(week, byId, config) {
     index: week.index,
     deload: true,
     transition: week.transition,
+    parked: week.parked,
     warnings: week.warnings.slice(),
     workouts: week.workouts.map(function (w) {
       return {
@@ -445,6 +466,194 @@ function applyDeload(week, byId, config) {
           return n;
         })
       };
+    })
+  };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Swaps
+//
+// Every swap gives the replacement its own slot (day:exercise_id), so it
+// progresses independently. Whatever is swapped out is parked on the week with
+// its progression intact; swapping back resumes it. Parked prescriptions ride
+// along from week to week untouched until they're used again.
+// ─────────────────────────────────────────────────────────────────────────────
+
+function copyParked(parked) {
+  var out = {};
+  Object.keys(parked || {}).forEach(function (k) { out[k] = clonePrescription(parked[k]); });
+  return out;
+}
+
+function stripSwap(p) {
+  var n = clonePrescription(p);
+  n.note = p.note;
+  return n;
+}
+
+var SWAP_REASON = { lateral: 'Similar', regress: 'Easier', progress: 'Harder' };
+
+/**
+ * Ranked replacements for an exercise. Your hand-authored substitutions come
+ * first; then anything training the same primary pattern, preferring the same
+ * role and overlapping muscles. Lifts already in the day are excluded.
+ */
+function swapCandidates(exerciseId, library, excludeIds) {
+  var byId = indexById(library);
+  var orig = byId[exerciseId];
+  var skip = {};
+  (excludeIds || []).concat([exerciseId]).forEach(function (id) { skip[id] = true; });
+  var out = [];
+
+  var subs = orig.substitutions || {};
+  ['lateral', 'regress', 'progress'].forEach(function (k) {
+    (subs[k] || []).forEach(function (id) {
+      if (skip[id] || !byId[id]) return;
+      skip[id] = true;
+      out.push({ exercise: byId[id], reason: SWAP_REASON[k] });
+    });
+  });
+
+  var pattern = orig.components[0].pattern;
+  var computed = library.filter(function (e) {
+    return !skip[e.id] && e.prescription_unit === 'reps' && e.components[0].pattern === pattern;
+  }).map(function (e) {
+    var overlap = e.primary_muscles.filter(function (m) { return orig.primary_muscles.indexOf(m) !== -1; }).length;
+    var score = (e.role === orig.role ? 3 : 0) + overlap * 2;
+    return { exercise: e, score: score, reason: overlap ? 'Same muscles' : 'Same movement' };
+  });
+  computed.sort(function (a, b) { return b.score - a.score || a.exercise.name.localeCompare(b.exercise.name); });
+  computed.slice(0, 8).forEach(function (c) { out.push({ exercise: c.exercise, reason: c.reason }); });
+  return out;
+}
+
+/** Every prescription in a week, including parked ones and ones hidden behind a swap. */
+function allPrescriptions(week) {
+  var out = [];
+  week.workouts.forEach(function (w) {
+    w.exercises.forEach(function (p) { out.push(p); if (p.temp_swap_of) out.push(p.temp_swap_of); });
+  });
+  Object.keys(week.parked || {}).forEach(function (k) { out.push(week.parked[k]); });
+  return out;
+}
+
+function buildReplacement(orig, newEx, day, week, config) {
+  var slot = day + ':' + newEx.id;
+  var p;
+  // same lift done on another day? start from that weight instead of asking
+  var known = allPrescriptions(week).filter(function (x) {
+    return x.exercise_id === newEx.id && x.weight_lb !== null;
+  })[0];
+  if (week.parked && week.parked[slot]) {
+    p = clonePrescription(week.parked[slot]);
+    p.note = 'swapped in — picks up where it left off';
+    if (p.weight_lb === null && known) p.weight_lb = known.weight_lb;
+  } else {
+    var vr = newEx.viable_reps;
+    var base = orig.amrap ? 8 : orig.rep_range[0];
+    base = Math.max(vr[0], Math.min(base, vr[1]));
+    var range = rangeFor(base, config);
+    range[1] = Math.max(range[0], Math.min(range[1], vr[1]));
+    p = {
+      exercise_id: newEx.id, slot: slot, order: orig.order,
+      weight_lb: known ? known.weight_lb : null,
+      target_reps: orig.target_reps.map(function () { return range[0]; }),
+      rep_range: range, amrap: false,
+      rest_sec: range[0] <= config.fixed_reps_max ? config.heavy_rest_sec : newEx.default_rest_sec,
+      target_rpe: orig.target_rpe,
+      note: known ? 'swapped in — starting from the weight you use elsewhere'
+        : 'swapped in — enter your weight'
+    };
+  }
+  p.order = orig.order;
+  if (week.deload) {
+    p.target_reps = p.target_reps.slice(0, orig.target_reps.length);
+    while (p.target_reps.length < orig.target_reps.length) p.target_reps.push(p.target_reps[0]);
+    if (p.weight_lb !== null) p.weight_lb = roundLoad(p.weight_lb * config.deload_load_factor, newEx);
+    p.target_rpe = orig.target_rpe;
+  }
+  return p;
+}
+
+function cloneWeek(week) {
+  var w = JSON.parse(JSON.stringify(week));
+  w.parked = w.parked || {};
+  return w;
+}
+
+/**
+ * Swap one exercise in a day. Returns a new week; never mutates the input.
+ * `permanent` false = today only; true = from now on.
+ */
+function swapExercise(week, day, exerciseId, newId, library, config, permanent) {
+  config = config || CONFIG;
+  var byId = indexById(library);
+  var out = cloneWeek(week);
+  var workout = out.workouts[day - 1];
+  var idx = -1;
+  workout.exercises.forEach(function (p, i) { if (p.exercise_id === exerciseId) idx = i; });
+  if (idx === -1) throw new Error(exerciseId + ' is not in day ' + day);
+
+  var current = workout.exercises[idx];
+  var orig = current.temp_swap_of || current;     // swapping a swap replaces the swap
+  if (current.temp_swap_of) out.parked[current.slot] = stripSwap(current);
+
+  var repl = buildReplacement(orig, byId[newId], day, out, config);
+  delete out.parked[repl.slot];
+
+  if (permanent) {
+    out.parked[orig.slot] = clonePrescription(orig);
+    workout.exercises[idx] = repl;
+    // a deload week resumes from `resume`; make the change stick there too
+    if (out.resume) {
+      var rw = out.resume[day - 1];
+      rw.exercises.forEach(function (p, i) {
+        if (p.slot !== orig.slot) return;
+        out.parked[orig.slot] = clonePrescription(p);
+        var un = buildReplacement(p, byId[newId], day, { parked: week.parked, workouts: out.resume }, config);
+        rw.exercises[i] = un;
+      });
+    }
+  } else {
+    repl.temp_swap_of = clonePrescription(orig);
+    workout.exercises[idx] = repl;
+  }
+  return out;
+}
+
+/** Undo a today-only swap: the original returns, the replacement is parked. */
+function undoSwap(week, day, exerciseId) {
+  var out = cloneWeek(week);
+  var ex = out.workouts[day - 1].exercises;
+  ex.forEach(function (p, i) {
+    if (p.exercise_id !== exerciseId || !p.temp_swap_of) return;
+    out.parked[p.slot] = stripSwap(p);
+    ex[i] = clonePrescription(p.temp_swap_of);
+  });
+  return out;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Bad day — §7
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * What a bad day actually trains: everything but the last isolation exercise,
+ * with target RPE capped. Display only — progression is already switched off
+ * for the session by nextWeek().
+ */
+function badDaySession(workout, byId, config) {
+  config = config || CONFIG;
+  var dropIdx = -1;
+  workout.exercises.forEach(function (p, i) {
+    if (byId[p.exercise_id] && byId[p.exercise_id].role === 'isolation') dropIdx = i;
+  });
+  return {
+    dropped: dropIdx === -1 ? null : workout.exercises[dropIdx],
+    exercises: workout.exercises.filter(function (p, i) { return i !== dropIdx; }).map(function (p) {
+      var n = Object.assign({}, p);
+      n.target_rpe = Math.min(p.target_rpe, config.bad_day_rpe_cap);
+      return n;
     })
   };
 }
@@ -514,7 +723,11 @@ var API = {
   weeklyVolume: weeklyVolume,
   balanceCheck: balanceCheck,
   stalled: stalled,
-  roundLoad: roundLoad
+  roundLoad: roundLoad,
+  swapCandidates: swapCandidates,
+  swapExercise: swapExercise,
+  undoSwap: undoSwap,
+  badDaySession: badDaySession
 };
 
 if (typeof module === 'object' && module.exports) module.exports = API;

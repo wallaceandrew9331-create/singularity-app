@@ -366,3 +366,90 @@ input.val::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 #timer.go #timer-bar { display: none; }
 #timer.go #timer-clock, #timer.go #timer-label { color: #1a1205; }
 #timer.go button { background: #1a120518; border-color: #1a120533; color: #1a1205; }
+
+/* ── card header: name + swap ───────────────────────────────────────────── */
+
+.card-title { display: flex; align-items: flex-start; gap: 10px; }
+.card-title .ex-name { flex: 1; }
+.swapbtn, .linkbtn {
+  background: none; border: 1px solid var(--line); color: var(--muted);
+  font: inherit; font-size: 12.5px; font-weight: 650;
+  border-radius: 9px; padding: 0 11px; min-height: 32px; margin: -4px -4px 0 0;
+}
+.linkbtn { min-height: 26px; margin: 0 0 0 6px; color: var(--accent); border-color: var(--accent-dim); }
+.ex-last { font-size: 12.5px; color: var(--muted); margin-top: 5px; font-variant-numeric: tabular-nums; }
+.ex-swapped { font-size: 12.5px; color: var(--text); margin-top: 6px; }
+
+/* ── set row right side: last time / PR / RPE ───────────────────────────── */
+
+.set-right { margin-left: auto; display: flex; align-items: center; gap: 7px; padding-right: 2px; }
+.set-right .set-rpe { margin-left: 0; padding-right: 0; }
+.set-last { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.pr {
+  font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em;
+  color: #1a1205; background: var(--accent);
+  border-radius: 6px; padding: 2px 6px;
+}
+
+/* ── warm-ups ───────────────────────────────────────────────────────────── */
+
+.warmup { border-top: 1px solid var(--line); padding: 9px 12px 11px; display: flex; flex-wrap: wrap; gap: 7px; align-items: center; }
+.warmup-title { width: 100%; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.wu {
+  display: inline-flex; align-items: center; gap: 7px;
+  min-height: 40px; padding: 0 12px 0 9px;
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px;
+  color: var(--text); font: inherit; font-size: 14px; font-variant-numeric: tabular-nums;
+}
+.wu-check {
+  width: 18px; height: 18px; border-radius: 5px; border: 1.5px solid var(--muted);
+  display: grid; place-items: center; font-size: 12px; font-weight: 800;
+}
+.wu.on { color: var(--muted); }
+.wu.on .wu-check { background: var(--good); border-color: var(--good); color: #06281a; }
+
+/* ── toast ──────────────────────────────────────────────────────────────── */
+
+#toast {
+  position: fixed; left: 12px; right: 12px; top: calc(12px + env(safe-area-inset-top));
+  z-index: 30; max-width: 520px; margin: 0 auto;
+  background: var(--accent); color: #1a1205;
+  border-radius: 14px; padding: 12px 15px;
+  font-size: 15px; box-shadow: 0 8px 30px #0008;
+}
+#toast strong { font-weight: 850; letter-spacing: 0.04em; margin-right: 4px; }
+.toast-sub { font-size: 12.5px; margin-top: 2px; opacity: 0.8; }
+
+/* ── swap sheet ─────────────────────────────────────────────────────────── */
+
+.swaplist { max-height: 52vh; overflow-y: auto; margin: 0 -4px; }
+.swapitem {
+  display: flex; width: 100%; align-items: center; gap: 10px;
+  min-height: 52px; padding: 0 12px; margin-bottom: 6px;
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px;
+  color: var(--text); font: inherit; font-size: 15px; text-align: left;
+}
+.swapitem span:first-child { flex: 1; }
+.swapwhy { font-size: 12px; color: var(--muted); }
+
+/* ── history ────────────────────────────────────────────────────────────── */
+
+.back { margin: 0 0 10px; min-height: 44px; text-align: left; padding-left: 4px; border: 0; color: var(--muted); }
+.chart {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 12px 10px 6px; margin-bottom: 6px;
+}
+.chart-readout { font-size: 13px; color: var(--muted); padding: 0 4px 6px; min-height: 18px; font-variant-numeric: tabular-nums; }
+.chart svg { display: block; width: 100%; height: auto; touch-action: pan-y; }
+.c-grid { stroke: var(--line); stroke-width: 1; }
+.c-axis { fill: var(--muted); font-size: 10.5px; font-variant-numeric: tabular-nums; }
+.c-xhair { stroke: var(--muted); stroke-width: 1; }
+.c-line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.c-dot { fill: var(--accent); stroke: var(--surface); stroke-width: 2; }
+.c-dot.c-deload { fill: var(--surface); stroke: var(--accent); stroke-width: 1.5; }
+.c-end { fill: var(--text); font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.hist-row { padding: 10px 2px; border-bottom: 1px solid var(--line); }
+.hist-when { font-size: 12.5px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.hist-sets { font-size: 14.5px; margin-top: 3px; font-variant-numeric: tabular-nums; }
+.hist-pr { color: var(--accent); font-weight: 700; }
